@@ -1,20 +1,25 @@
-import React,{useState} from "react";
-import { View, StyleSheet, TextInput, Button } from "react-native";
+import React, { useState } from "react";
+import { View, StyleSheet, TextInput, Button,Alert } from "react-native";
 
-export default function AddTodo({onSubmit}) {
-    const [value,setValue] = useState('')
+export default function AddTodo({ onSubmit }) {
+  const [value, setValue] = useState("");
 
   const pressHandler = () => {
-      onSubmit(value)
-      setValue('')
-  }
+    if (value.trim()) {
+      onSubmit(value);
+      setValue("");
+    } else {
+      Alert.alert('Дело не может быть пустым!')
+    }
+  };
 
   return (
     <View style={styles.add}>
-      <TextInput style={styles.input}
-       onChangeText={setValue}
-       value = {value}
-       placeholder = "Что надо сделать?"
+      <TextInput
+        style={styles.input}
+        onChangeText={setValue}
+        value={value}
+        placeholder="Что надо сделать?"
       />
       <Button title="Добавить в список!" onPress={pressHandler} />
     </View>
@@ -26,8 +31,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
-    marginBottom : 15,
-
+    marginBottom: 15,
   },
   input: {
     width: "57%",

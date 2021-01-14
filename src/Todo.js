@@ -4,7 +4,8 @@ import { View, Text, StyleSheet,TouchableOpacity} from "react-native";
 export default function Todo({ todo,onRemove }) {
   return (
     <TouchableOpacity activeOpacity = {0.5}
-    // onLongPress={() => onRemove(todo.id)}
+    onPress = {() => console.log('Pressed',todo.id)}
+    onLongPress={() => onRemove(todo.id)}
     >
     <View style={styles.todo}>
       <Text>{todo.title}</Text>

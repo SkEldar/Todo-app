@@ -7,9 +7,12 @@ import Todo from "./src/Todo";
 
 export default function App() {
   const [todos, setTodos] = useState([]);
-
+  
+  const removeTodo = id => {
+    setTodos(prev => prev.filter(todo => todo.id != id))
+  }
   const addTodo = (title) => {
-    setTodos((prev) => [
+    setTodos((prev) => [  
       ...prev,
       {
         id: Date.now().toString(),
@@ -23,10 +26,9 @@ export default function App() {
       <Navbar title="Todo" />
       <View style={styles.container}>
         <AddTodo onSubmit={addTodo} />
-
         <ScrollView>
           {todos.map((todo) => (
-            <Todo todo={todo} key={todo.id} />
+            <Todo todo={todo} key={todo.id} onRemove={removeTodo} />
           ))}
         </ScrollView>
       </View>
