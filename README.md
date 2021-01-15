@@ -9,4 +9,4 @@ add tasks, you need to write it in the block with the input field and then click
 
 In order to delete the completed task, press and hold "3 seconds will be enough!"
 
-
+{https://i.imgur.com/pyYykRl.jpg}
